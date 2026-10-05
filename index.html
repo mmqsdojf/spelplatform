@@ -67,6 +67,7 @@ const MINI=[
 const CITY={id:"city"};
 let pts=Number(localStorage.getItem("sp_pts"))||0,city=null;try{city=JSON.parse(localStorage.getItem("sp_city"))}catch(e){}
 let cur=null,last=0,poll=null,tt=0,startPts=0;
+const TEST=/[?&#]test/.test(location.search+location.hash)||(()=>{try{return window.top!==window}catch(e){return true}})();if(TEST&&pts<1e24){pts=1e24;setTimeout(()=>toast("🧪 Testmodus: je hebt ⭐"+fmt(pts)+" punten"),800)}
 const $=id=>document.getElementById(id);
 const fmt=n=>{if(n<1e4)return Math.floor(n);const u=["k","M","B","T","Qa","Qi","Sx","Sp"];let i=-1;while(n>=1000&&i<u.length-1){n/=1000;i++}return n.toFixed(n<100?1:0)+u[i]};
 function save(){localStorage.setItem("sp_pts",pts);if(city)localStorage.setItem("sp_city",JSON.stringify(city))}
